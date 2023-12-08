@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Videos en Realidad Aumentada</title>
+    <!-- Incluir AR.js y A-Frame -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+    <!-- Escena de A-Frame con marcadores AR -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+        renderer="antialias: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
+        <a-assets>
+            <video id="video_1" autoplay loop="true" crossorigin="anonymous" src="https://cdn.glitch.global/7344f2ac-4148-44f8-a98b-eff643f8d0d5/video1.mp4?v=1701874076353"></video>
+            <video id="video_2" autoplay loop="true" crossorigin="anonymous" src="https://cdn.glitch.me/7344f2ac-4148-44f8-a98b-eff643f8d0d5/video2.mp4?v=1701876235142"></video>
+            <video id="video_3" autoplay loop="true" crossorigin="anonymous" src="https://cdn.glitch.me/7344f2ac-4148-44f8-a98b-eff643f8d0d5/videdo3.mp4?v=1701876202402"></video>
+            <video id="video_4" autoplay loop="true" crossorigin="anonymous" src="https://cdn.glitch.me/7344f2ac-4148-44f8-a98b-eff643f8d0d5/video4.mp4?v=1701876358137"></video>
+            <video id="video_5" autoplay loop="true" crossorigin="anonymous" src="https://cdn.glitch.me/7344f2ac-4148-44f8-a98b-eff643f8d0d5/video5.mp4?v=1701876333851"></video>
+        </a-assets>
+
+        <!-- Marcador AR 1 -->
+        <a-marker type="barcode" value="4">
+            <a-video width="3" height="2" src="#video_1" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+
+        <!-- Marcador AR 2 -->
+        <a-marker type="barcode" value="5">
+            <a-video width="3" height="2" src="#video_2" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+
+        <!-- Marcador AR 3 -->
+        <a-marker type="barcode" value="6">
+            <a-video width="3" height="2" src="#video_3" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+
+        <!-- Marcador AR 4 -->
+        <a-marker type="barcode" value="7">
+            <a-video width="3" height="2" src="#video_4" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+
+        <!-- Marcador AR 5 -->
+        <a-marker type="barcode" value="8">
+            <a-video width="3" height="2" src="#video_5" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+
+        <script>
+            // Obtener los elementos de video y marcadores
+            var video1 = document.getElementById('video_1');
+            var video2 = document.getElementById('video_2');
+            var video3 = document.getElementById('video_3');
+            var video4 = document.getElementById('video_4');
+            var video5 = document.getElementById('video_5');
+
+            var marker1 = document.querySelector('a-marker[value="4"]');
+            var marker2 = document.querySelector('a-marker[value="5"]');
+            var marker3 = document.querySelector('a-marker[value="6"]');
+            var marker4 = document.querySelector('a-marker[value="7"]');
+            var marker5 = document.querySelector('a-marker[value="8"]');
+
+            // Manejar eventos de marcador para reproducir/pausar videos
+            marker1.addEventListener('markerFound', function () {
+                video1.play();
+            });
+
+            marker1.addEventListener('markerLost', function () {
+                video1.pause();
+            });
+
+            marker2.addEventListener('markerFound', function () {
+                video2.play();
+            });
+
+            marker2.addEventListener('markerLost', function () {
+                video2.pause();
+            });
+
+            marker3.addEventListener('markerFound', function () {
+                video3.play();
+            });
+
+            marker3.addEventListener('markerLost', function () {
+                video3.pause();
+            });
+
+            marker4.addEventListener('markerFound', function () {
+                video4.play();
+            });
+
+            marker4.addEventListener('markerLost', function () {
+                video4.pause();
+            });
+
+            marker5.addEventListener('markerFound', function () {
+                video5.play();
+            });
+
+            marker5.addEventListener('markerLost', function () {
+                video5.pause();
+            });
+        </script>
+    </a-scene>
+</body>
+</html>
